@@ -10,8 +10,8 @@
 
 	<properties>
 		<start-class>demo.Application</start-class>
-		<docker.registry>10.167.202.118:6443</docker.registry>
-		<docker.registry.name>meidi</docker.registry.name>
+		<docker.registry>10.167.202.170</docker.registry><!-- docker.registry的IP和端口 -->
+		<docker.registry.name>microservice</docker.registry.name><!-- docker.registry的repo名字 -->
 	</properties>
 
 	<dependencies>
@@ -53,7 +53,7 @@
 				<configuration>
 					<imageName>${docker.registry}/${docker.registry.name}/${project.artifactId}:${project.version}</imageName>
 					<dockerDirectory>src/main/docker</dockerDirectory>
-					<dockerHost>https://192.168.99.101:2376</dockerHost>
+					<dockerHost>https://192.168.99.103:2376</dockerHost>
 					<dockerCertPath>C:\Users\Administrator\.docker\machine\machines\mycompany</dockerCertPath> 
 					<pushImage>true</pushImage><!-- 创建完docker image 后是否  push 到docker register，也可以在maven命令中用 -DpushImage 来替代 -->
 					<resources>
@@ -65,8 +65,8 @@
 					</resources>
 					<!-- <serverId>docker-hub</serverId>
 					<registryUrl>https://index.docker.io/v1/</registryUrl> -->
-					<serverId>nexus-docker-register</serverId>
-					<registryUrl>http://10.167.202.118:6443</registryUrl>
+					<serverId>harbor-docker-register</serverId>
+					<registryUrl>${docker.registry}</registryUrl>
 				</configuration>
 			</plugin>
 		</plugins>
