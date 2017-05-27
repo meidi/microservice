@@ -53,8 +53,8 @@
 				<configuration>
 					<imageName>${docker.registry}/${docker.registry.name}/${project.artifactId}:${project.version}</imageName>
 					<dockerDirectory>src/main/docker</dockerDirectory>
-					<dockerHost>https://192.168.99.103:2376</dockerHost>
-					<dockerCertPath>C:\Users\Administrator\.docker\machine\machines\mycompany</dockerCertPath> 
+					<dockerHost>http://10.167.202.170:2375</dockerHost>
+					<!-- <dockerCertPath>C:\Users\Administrator\.docker\machine\machines\myharbor</dockerCertPath>  -->
 					<pushImage>true</pushImage><!-- 创建完docker image 后是否  push 到docker register，也可以在maven命令中用 -DpushImage 来替代 -->
 					<resources>
 						<resource>
