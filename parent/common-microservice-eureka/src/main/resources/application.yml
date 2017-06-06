@@ -1,18 +1,25 @@
-server:
-  port: 8761
-
-logging:
-  file: common-microservice-eureka.log
-  levels:
-    org.springframework.boot.env.PropertySourcesLoader: TRACE
-    org.springframework.web: DEBUG
+spring: 
+  application:
+    name: microservice-discovery-eureka-HA
+---
+spring:
+  profiles: peer1
 eureka:
   instance:
-    hostname: ${eureka.server.hostname}
-    preferIpAddress: true
-  #在默认情况下erureka server也是一个eureka client,通过eureka.client.registerWithEureka：false和fetchRegistry：false来表明自己是一个eureka server.
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
-  server:
-    waitTimeInMsWhenSyncEmpty: 0
+    hostname: eureka-peer1
+  client: 
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka-peer1:8080/eureka/,http://eureka-peer2:8080/eureka/
+---
+spring:
+  profiles: peer2
+eureka:
+  instance:
+    hostname: eureka-peer2
+  client: 
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka-peer1:8080/eureka/,http://eureka-peer2:8080/eureka/
