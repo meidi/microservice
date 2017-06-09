@@ -25,7 +25,7 @@ spring:
   sleuth:
     enabled: false
 
-# default is mem (in-memory) 
+# default is mem (in-memory)  
 zipkin:
   storage:
     type: mysql
