@@ -1,0 +1,31 @@
+server:
+  port: 9411
+
+info:
+  contact:
+    email: dimei1@txtechnologies.com
+
+spring:
+  application:
+    name: sleuth-zipkin-stream
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: 10.167.202.187:9092
+          zk-nodes: 10.167.202.187:2181
+  datasource:
+    schema: classpath:/mysql.sql
+    url: jdbc:mysql://10.167.202.187:3306/test
+    username: root
+    password: 12qwaszx
+# Switch this on to create the schema on startup:
+    initialize: true
+    continueOnError: true 
+  sleuth:
+    enabled: false
+
+# default is mem (in-memory)
+zipkin:
+  storage:
+    type: mysql

@@ -1,16 +1,20 @@
 server:
-  port: 8080
+  port: 9102
 logging:
-  file: common-microservice-docker.log
+  file: common-microservice-eureka-docker.log
   levels:
     org.springframework.boot.env.PropertySourcesLoader: TRACE
     org.springframework.web: DEBUG
 management: 
   security: 
     enabled: false
-eureka: 
+eureka:
   client:
-    serviceUrl: 
-      defaultZone: http://10.167.202.129:8761/eureka/
+    serviceUrl:
+      # defaultZone: http://poc-4.novalocal:8761/eureka/
+      defaultZone: http://microservice-eureka/eureka/
+      # defaultZone: ${EUREKA_URL:http://user:password@10.167.202.129:8761}/eureka/
+      #healthcheck:
+      #  enabled: true
     healthcheck:
       enabled: true
