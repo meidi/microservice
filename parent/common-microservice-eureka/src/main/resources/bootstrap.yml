@@ -1,9 +1,7 @@
 spring:
   application:
-    name: usercheck
-  profiles:
-    active: online
+    name: eurekaserver
   cloud:
     config:
-      uri: http://10.167.202.129:8888
+      uri: http://configserver:8888
       label: master

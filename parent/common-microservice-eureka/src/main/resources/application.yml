@@ -1,25 +1,13 @@
-spring: 
-  application:
-    name: microservice-discovery-eureka-HA
----
-spring:
-  profiles: peer1
-eureka:
-  instance:
-    hostname: eureka-peer1
+server: 
+  port: 8282
+logging:
+  file: common-microservice-eureka.log
+  levels:
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: DEBUG
+eureka: 
   client: 
-    registerWithEureka: true
-    fetchRegistry: true
+    registerWithEureka: false
+    fetchRegistry: false
     serviceUrl:
-      defaultZone: http://eureka-peer1:8080/eureka/,http://eureka-peer2:8080/eureka/
----
-spring:
-  profiles: peer2
-eureka:
-  instance:
-    hostname: eureka-peer2
-  client: 
-    registerWithEureka: true
-    fetchRegistry: true
-    serviceUrl:
-      defaultZone: http://eureka-peer1:8080/eureka/,http://eureka-peer2:8080/eureka/
+      defaultZone: http://eurekaserver:8282/eureka/

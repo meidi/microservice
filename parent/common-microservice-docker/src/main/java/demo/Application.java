@@ -17,8 +17,8 @@ public class Application {
 	
     @RequestMapping("/")
     public String home() {
-    	log.info("--------------Hello Docker World-------------");
-        return "Hello Docker World";
+    	log.info("--------------http://apisec.fedwallet.net-------------");
+        return "http://apisec.fedwallet.net";
     }
 
     public static void main(String[] args) {
